@@ -25,8 +25,29 @@ class Validation {
     return true;
   }
 
+  // Check character
+  checkCharacterString(value, divId, message) {
+    const letter = "^[A-Za-z]+$";
+    if (value.match(letter)) {
+      getEleId(divId).innerHTML = "";
+      getEleId(divId).style.display = "none";
+      return true;
+    }
+    getEleId(divId).innerHTML = message;
+    getEleId(divId).style.display = "block";
+    return false;
+  }
   // Check Length
-
+  checkLength(value, divId, message, min, max) {
+    if (value.length >= min && value.length <= max) {
+      getEleId(divId).innerHTML = "";
+      getEleId(divId).style.display = "none";
+      return true;
+    }
+    getEleId(divId).innerHTML = message;
+    getEleId(divId).style.display = "block";
+    return false;
+  }
   // CheckIdExist
   checkIdExist(value, divId, message, listFood) {
     let isExist = false;

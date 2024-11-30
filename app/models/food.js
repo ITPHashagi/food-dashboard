@@ -20,7 +20,7 @@ class Food {
     this.promotionPrice = 0;
   }
   callPricePromotion() {
-    if (this.discount > 0) {
+    if (this.discount >= 0) {
       this.promotionPrice = this.price * ((100 - this.discount) / 100);
     }
   }

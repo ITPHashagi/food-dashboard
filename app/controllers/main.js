@@ -31,11 +31,11 @@ const getInfoFood = () => {
   );
   // foodName
   isValid &= 
-    validation.checkEmpty(tenMon, "invalidTen", "Nhập vào tên món");
+    validation.checkEmpty(tenMon, "invalidTen", "Nhập vào tên món") && validation.checkCharacterString(tenMon, "invalidTen", "Nhập sai ký tự và tên món!");
   // foodType
   isValid &=
-   validation.checkEmpty(loai, "invalidLoai", "Lựa chọn loại dùng");
-  //  validation.checkSelect(loai, "invalidLoai", "Lựa chọn loại dùng")
+   validation.checkSelect("loai", "invalidLoai", "Lựa chọn loại dùng");
+  //  validation.checkEmpty(loai, "invalidLoai", "Lựa chọn loại dùng")
   // foodPrice
   isValid &= validation.checkEmpty(giaMon, "invalidGia", "Nhập vào giá");
   // discount
@@ -50,6 +50,8 @@ const getInfoFood = () => {
     "invalidTT",
     "Chọn trạng thái của món"
   );
+  // description
+  isValid &= validation.checkEmpty(moTa, "invalidMoTa", "Vui lòng thêm ghi chú.") && validation.checkLength(moTa, "invalidMoTa", "Ký tự từ 1-500 chữ", 1, 500);
   if (!isValid) return null;
   //   in ra màn hình Food
   const food = new Food(
